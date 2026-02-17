@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package hello;
+
+//github.com/pushpendras21/protobuf-grpc/protogen/go/hello
+option go_package = "github.com/pushpendras21/protobuf-grpc/protogen/go/hello";
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloResponse {
+  string greet = 1;
+}
+
+//
+service HelloService {
+  // SayHello is a unary RPC method that takes a HelloRequest and
+  // returns a HelloResponse.
+  rpc SayHello(HelloRequest) returns (HelloResponse){};
+}
+
