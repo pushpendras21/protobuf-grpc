@@ -7,6 +7,7 @@ option go_package = "github.com/pushpendras21/protobuf-grpc/protogen/go/hello";
 
 message HelloRequest {
   string name = 1;
+  // age added.
   uint32 age = 16;
 }
 
