@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bank;
 
-option go_package = "github.com/timpamungkas/my-grpc-proto/protogen/go/bank";
+option go_package = "github.com/pushpendras21/protobuf-grpc/protogen/go/bank";
 
 message ExchangeRateRequest {
   string from_currency = 1 [json_name = "from_currency"];

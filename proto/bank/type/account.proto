@@ -4,7 +4,7 @@ package bank;
 
 import "proto/google/type/date.proto";
 
-option go_package = "github.com/timpamungkas/my-grpc-proto/protogen/go/bank";
+option go_package = "github.com/pushpendras21/protobuf-grpc/protogen/go/bank";
 
 message CurrentBalanceRequest {
   string account_number = 1 [json_name = "account_number"];

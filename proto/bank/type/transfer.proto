@@ -4,7 +4,7 @@ package bank;
 
 import "proto/google/type/datetime.proto";
 
-option go_package = "github.com/timpamungkas/my-grpc-proto/protogen/go/bank";
+option go_package = "github.com/pushpendras21/protobuf-grpc/protogen/go/bank";
 
 enum TransferStatus {
   TRANSFER_STATUS_UNSPECIFIED = 0;

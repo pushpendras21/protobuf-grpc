@@ -5,7 +5,7 @@ package resiliency;
 import "proto/google/api/annotations.proto";
 import "proto/protoc-gen-openapiv2/options/annotations.proto";
 
-option go_package = "github.com/timpamungkas/my-grpc-proto/protogen/go/resiliency";
+option go_package = "github.com/pushpendras21/protobuf-grpc/protogen/go/resiliency";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
