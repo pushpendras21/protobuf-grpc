@@ -3,11 +3,12 @@ GO_MODULE := github.com/pushpendras21/protobuf-grpc
 
 .PHONY: clean
 clean:
-ifeq ($(OS),Windows_NT)
-  if exist "protogen" rd /s /q protogen
-  mkdir protogen\go
+ifeq ($(OS), Windows_NT)
+	if exist "protogen" rd /s /q protogen
+	mkdir protogen\go
 else
-	rm -rF ./protogen/go
+	rm -fR ./protogen 
+	mkdir -p ./protogen/go
 endif
   
 
@@ -16,9 +17,9 @@ endif
 protoc-go:
 	protoc --go_opt=module=$(GO_MODULE) --go_out=. \
 	--go-grpc_opt=module=$(GO_MODULE) --go-grpc_out=. \
-	./proto/hello/*.proto ./proto/payment/*.proto ./proto/transaction/*.proto \
-	./proto/bank/*.proto ./proto/bank/type/*.proto \
-	./proto/resilience/*.proto
+	./proto/hello/*.proto ./proto/payment/*.proto ./proto/transaction/*.proto
+
+
 
 
 .PHONY: build
@@ -27,9 +28,9 @@ build: clean protoc-go
 
 .PHONY: pipeline-init
 pipeline-init:
-  sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
-  go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-  go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+	sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
+	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 
 .PHONY: pipeline-build
@@ -39,13 +40,13 @@ pipeline-build: pipeline-init build
 .PHONY: clean-gateway
 clean-gateway:
 ifeq ($(OS),Windows_NT)
-  if exist "protogen\gateway" rd /s /q protogen\gateway
-  mkdir protogen\gateway\go
-  mkdir protogen\gateway\openapiv2
+	if exist "protogen\gateway" rd /s /q protogen\gateway
+	mkdir protogen\gateway\go
+	mkdir protogen\gateway\openapiv2
 else
-  rm -rF ./protogen/gateway
-  mkdir -p ./protogen/gateway/go
-  mkdir -p ./protogen/gateway/openapiv2
+	rm -rF ./protogen/gateway
+	mkdir -p ./protogen/gateway/go
+	mkdir -p ./protogen/gateway/openapiv2
 endif
 
 
