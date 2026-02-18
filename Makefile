@@ -28,7 +28,7 @@ build: clean protoc-go
 
 .PHONY: pipeline-init
 pipeline-init:
-	sudo apt-get install -y protobuf-compiler
+	sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
@@ -44,7 +44,7 @@ ifeq ($(OS),Windows_NT)
 	mkdir protogen\gateway\go
 	mkdir protogen\gateway\openapiv2
 else
-	rm -rF ./protogen/gateway
+	rm -fR ./protogen/gateway
 	mkdir -p ./protogen/gateway/go
 	mkdir -p ./protogen/gateway/openapiv2
 endif
