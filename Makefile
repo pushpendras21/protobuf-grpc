@@ -6,10 +6,10 @@ clean:
 ifeq ($(OS),Windows_NT)
   if exist "protogen" rd /s /q protogen
   mkdir protogen\go
-  else {
+else
 	rm -rF ./protogen/go
-  endif
-  }
+endif
+  
 
 
 .PHONY: protoc-go
