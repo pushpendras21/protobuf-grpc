@@ -20,7 +20,8 @@ service HelloService {
   // SayHello is a unary RPC method that takes a HelloRequest and
   // returns a HelloResponse.
   rpc SayHello(HelloRequest) returns (HelloResponse){};
-  //rpc SayManyHellos(HelloRequest) returns (stream HelloResponse){};
+  //SayManyHellos  takes HelloRequest and returns a stream of HelloResponse
+  rpc SayManyHellos(HelloRequest) returns (stream HelloResponse){};
   //rpc SayHelloToEveryone(stream HelloRequest) returns (HelloResponse){};
   //rpc SayHelloContinuous(stream HelloRequest) returns (stream HelloResponse){};
 }
