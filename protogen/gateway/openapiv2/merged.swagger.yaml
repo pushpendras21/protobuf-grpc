@@ -436,6 +436,33 @@ paths:
             $ref: '#/definitions/helloHelloRequest'
       tags:
         - HelloService
+  /hello.HelloService/SayManyHellos:
+    post:
+      summary: SayManyHellos  takes HelloRequest and returns a stream of HelloResponse
+      operationId: HelloService_SayManyHellos
+      responses:
+        "200":
+          description: A successful response.(streaming responses)
+          schema:
+            type: object
+            properties:
+              result:
+                $ref: '#/definitions/helloHelloResponse'
+              error:
+                $ref: '#/definitions/rpcStatus'
+            title: Stream result of helloHelloResponse
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/helloHelloRequest'
+      tags:
+        - HelloService
 definitions:
   bankCreateAccountRequest:
     type: object
