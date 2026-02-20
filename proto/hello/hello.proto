@@ -15,14 +15,14 @@ message HelloResponse {
   string greet = 1;
 }
 
-//
+//HelloService with 4RPCs methods
 service HelloService {
-  // SayHello is a unary RPC method that takes a HelloRequest and
-  // returns a HelloResponse.
+  //SayHello method that takes a HelloRequest and returns a HelloResponse.
   rpc SayHello(HelloRequest) returns (HelloResponse){};
   //SayManyHellos  takes HelloRequest and returns a stream of HelloResponse
-  rpc SayManyHellos(HelloRequest) returns (stream HelloResponse){};
-  //rpc SayHelloToEveryone(stream HelloRequest) returns (HelloResponse){};
-  //rpc SayHelloContinuous(stream HelloRequest) returns (stream HelloResponse){};
+  rpc SayManyHellos(HelloRequest) returns (stream HelloResponse) {}
+  //SayHelloToEveryone takes HelloRequest and returns HelloResponse
+  rpc SayHelloToEveryone(stream HelloRequest) returns (HelloResponse) {}
+  //SayHelloContinuous takes stream of HelloRequest and returns HelloResponse
+  rpc SayHelloContinuous(stream HelloRequest) returns (stream HelloResponse){};
 }
-
